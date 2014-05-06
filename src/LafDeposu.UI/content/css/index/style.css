@@ -1,0 +1,8 @@
+﻿table td:first-child {
+     width: 140px;
+     font-weight: bold;
+}
+
+#filterAncContainer {
+    margin-top: 15px;
+}

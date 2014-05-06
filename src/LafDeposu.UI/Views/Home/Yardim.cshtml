@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Yardım | Laf Deposu";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Yardım</h2>
+        <h3>Genel Arama</h3>
+        <p>Laf Deposu sizin girmiş olduğunuz harflerden oluşabilecek Türkçe kelimeleri bulmaya yarayan bir programdır.</p>
+        <p>Alfabede yer alan 29 harf dışında, özel bir harf olarak <code>*</code> karakterini kullanabilirsiniz. Yıldız karakteri (<code>*</code>) joker harf yerine geçip, alfabedeki tüm harfleri sizin için arayacaktır. Örneğin arama alanına <code>ke*</code> yazdığınızda karşınıza "<code>kel</code>, <code>kek</code>, <code>kep</code>, <code>bek</code>" sonuçları gelecektir.</p>
+        <p>Girdiğiniz harflerin sıralaması önemli değildir. <code>kemal</code>, <code>ekmal</code>, <code>lemak</code> ya da <code>lamek</code> arasınada program açısından bir fark yoktur. Yıldız karakterini de istediğiniz sırada yazabilirsiniz.</p>
+        <p>Aramalarınızda birden çok yıldız karakteri kullanabilirsiniz</p>
+        <h3 id="Filtre">Filtre</h3>
+        <p>Filtre bölümü arama sonuçlarında karşınıza gelen listeyi kısıtlamanız için size yardımcı olur. Bu bölümde üç ayrı yere harflerinizi girebilirsiniz: Başlayan, İçeren ve Biten</p>
+        <h4>Başlayan</h4>
+        <p>Arama sonuçlarınız bu bölümde yazan harflerle başlayan kelimelerden oluşur. Örneğin <strong>Arama</strong> bölümüne <code>kemal</code> yazıp, <strong>Başlayan</strong> bölümüne <code>k</code> yazarsanız arama sonuçlarından sadece <code>k</code> ile başlayanlar size görünür ve sonuçlar <code><strong>k</strong>alem</code>, <code><strong>k</strong>elam</code>, <code><strong>k</strong>emal</code> ve <code><strong>k</strong>ale</code> olur. <strong>Arama</strong> bölümüne <code>kemal</code> ve <strong>Başlayan</strong> bölümüne <code>kal</code> yazarsanız bulacağınız sonuçlar <code><strong>kal</strong>em</code>, <code><strong>kal</strong>e</code> ve <code><strong>kal</strong></code> olur.</p>
+        <h4>İçeren</h4>
+        <p>Arama sonuçlarınız bu bölümden yazan harfleri içeren kelimelerden oluşur. Örneğin <code>keramet</code> kelimesini aratıp, <strong>İçeren</strong> bölümüne <code>mar</code> yazarsanız bulacağınız sonuçlar <code>e<strong>mar</strong>et</code>, <code><strong>mar</strong>ket</code>, <code>e<strong>mar</strong>e</code>, <code><strong>mar</strong>ke</code>, <code><strong>mar</strong>k</code> ve <code><strong>mar</strong>t</code> olur.</p>
+        <h4>Biten</h4>
+        <p>Arama sonuçlarınız bu bölümde yazan harflerle biten kelimelerden oluşur. Örneğin <code>kemal</code> kelimesini aratıp, <strong>Biten</strong> bölümüne <code>mal</code> yazarsanız bulacağınız sonuçlar <code>ke<strong>mal</strong></code> ve <code><strong>mal</strong></code> olacaktır.</p>
+        <h5>Not</h5>
+        <p>7 harfli kelimelerden <code>osman</code> ile başlayanları bulmak için <strong>Arama</strong> bölümüne <code>*******</code>, <strong>Başlayan</strong> bölümüne ise <code>osman</code> yazmanız yeterlidir. Bulacağınız sonuçlar <code><strong>osman</strong>lı</code> ve <code><strong>osman</strong>i</code> olacaktir. Bu şekilde aramalar veritabanının tamamında yapıldığı için daha uzun sürebilir.</p>
+    </div>
+</div>

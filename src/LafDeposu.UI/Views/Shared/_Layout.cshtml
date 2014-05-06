@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="tr" ng-app="findWordsApp">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Girdiğiniz harflerle oluşabilecek Türkçe kelimeleri üreten bir internet sitesi.">
+    <link rel="shortcut icon" href="/content/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/content/bootstrap/")
+    @RenderSection("styles", required: false)
+    @RenderSection("scriptsHead", required: false)
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Laf Deposu</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://play.google.com/store/apps/details?id=com.appchain.kelimatik"><span class="glyphicon glyphicon-phone"></span> Android</a></li>
+                    <li><a href="/Yardim/">Yardım</a></li>
+                    <li><a href="/Iletisim/">İletişim</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        @RenderBody()
+
+        <div class="footer">
+            <p></p>
+        </div>
+
+    </div>
+    <!-- /container -->
+    <!-- JavaScript 
+    ================================================== -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/analytics")
+    @Scripts.Render("~/bundles/userreport")
+    @RenderSection("scriptsBottom", required: false)
+    <!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>

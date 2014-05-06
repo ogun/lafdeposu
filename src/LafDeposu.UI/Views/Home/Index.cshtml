@@ -1,0 +1,96 @@
+﻿@model LafDeposu.Helper.Models.SearchShare
+
+@{
+    ViewBag.Title = "Laf Deposu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    @Styles.Render("~/content/index")
+}
+
+<div ng-controller="wordListCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" id="srch-term" name="srch-term" class="form-control" placeholder="Harfleri Yazınız" ng-model="chars">
+                <div class="input-group-btn">
+                    <button id="srch-button" class="btn btn-default" type="submit" ng-click="findWordsClick()"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="filterAncContainer" class="row">
+        <div class="col-md-12 text-right">
+            <a id="filterAnchor" href="#">Filtre</a> <a href="/Yardim/#Filtre" title="Yardım">?</a>
+        </div>
+    </div>
+
+    <div id="filters" class="row hidden">
+        <div class="col-md-4 text-right">
+           <input type="text" id="startsWith" name="srch-term" class="form-control" placeholder="Başlayan" ng-model="startsWith">
+        </div>
+        <div class="col-md-4 text-right">
+           <input type="text" id="contains" name="srch-term" class="form-control" placeholder="İçeren" ng-model="contains">
+        </div>
+        <div class="col-md-4 text-right">
+           <input type="text" id="endsWith" name="srch-term" class="form-control" placeholder="Biten" ng-model="endsWith">
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="loadingContainer" class="row hide">
+        <div class="col-md-12 small">
+            <div id="loading"><img src="~/content/img/ajax-loader.gif" alt="Yükleniyor" width="32" height="32" /> Yükleniyor lütfen bekleyiniz</div>
+        </div>
+    </div>
+
+    <div class="row ng-cloak" ng-show="share">
+        <div class="col-md-12 text-right">
+            <a id="shareResult" href="/?{{share.queryString}}">Paylaş</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 ng-cloak">
+            <h4 ng-repeat-start="item in wordList">{{item.length}} Harfli Sonuçlar</h4>
+            <table class="table table-striped" ng-repeat-end>
+                <tbody>
+                    <tr ng-repeat="word in item.words">
+                        <td>{{word.w}}</td>
+                        <td>{{word.m}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@section scriptsBottom
+{
+    @Scripts.Render("~/bundles/index")
+
+    @if(!string.IsNullOrEmpty(Model.Keyword))
+    {
+        <script type="text/javascript">
+            $(function () {
+                $("#srch-term").val("@Model.Keyword");
+
+                @if (!string.IsNullOrEmpty(Model.StartsWith) || !string.IsNullOrEmpty(Model.Contains) || !string.IsNullOrEmpty(Model.EndsWith))
+                {
+                <text>
+                $("#startsWith").val("@Model.StartsWith");
+                $("#contains").val("@Model.Contains");
+                $("#endsWith").val("@Model.EndsWith");
+                $("#filterAnchor").trigger("click");
+                </text>
+                }
+
+                $("input").trigger("input");
+                $("#srch-button").click();
+            });
+        </script>
+    }    
+}

@@ -155,11 +155,11 @@
     <Content Include="content\css\_layout\style.css" />
     <Content Include="content\img\ajax-loader.gif" />
     <Content Include="content\img\favicon.ico" />
-    <Content Include="content\js\_layout\analytics.js" />
-    <Content Include="content\js\_layout\userreport.js" />
+    <Content Include="scripts\_layout\analytics.js" />
+    <Content Include="scripts\_layout\userreport.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="content\js\index\indexController.js" />
+    <Content Include="scripts\index\indexController.js" />
     <Content Include="App_Data\word.sqlite" />
     <Content Include="App_Data\mySql.zip" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -169,7 +169,7 @@
     <Content Include="content\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\FileSystem Desktop.pubxml" />
     <None Include="Properties\PublishProfiles\LafDeposu FTP.pubxml" />
-    <Content Include="content\js\index\bottom.js" />
+    <Content Include="scripts\index\bottom.js" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-resource.js" />
     <Content Include="scripts\angular-resource.min.js" />
@@ -208,6 +208,9 @@
       <Project>{1426eb2c-e99d-4925-b006-458900571899}</Project>
       <Name>LafDeposu.Helper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="content\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

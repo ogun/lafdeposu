@@ -12,7 +12,7 @@ namespace LafDeposu.UI
                         "~/scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/index").Include(
-                        "~/content/js/index/bottom.js"));
+                        "~/scripts/index/bottom.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/scripts/bootstrap.js"));
@@ -20,13 +20,13 @@ namespace LafDeposu.UI
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/scripts/angular.js",
                         "~/scripts/angular-resource.js",
-                        "~/content/js/index/indexController.js"));
+                        "~/scripts/index/indexController.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/analytics").Include(
-                        "~/content/js/_layout/analytics.js"));
+                        "~/scripts/_layout/analytics.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/userreport").Include(
-                        "~/content/js/_layout/userreport.js"));
+                        "~/scripts/_layout/userreport.js"));
 
 
             bundles.Add(new StyleBundle("~/sbundles/bootstrap")

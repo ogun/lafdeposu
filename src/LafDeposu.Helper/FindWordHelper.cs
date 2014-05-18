@@ -166,7 +166,6 @@ namespace LafDeposu.Helper
                     {
                         string dbWord = dbRow["word"].ToString();
                         string dbMeaning = dbRow["meaning"].ToString();
-                        dbMeaning = dbMeaning.Length > 95 ? string.Format("{0}...", dbMeaning.Substring(0, 95)) : dbMeaning;
 
                         bool isWordOK = ControlDbWord(input, dbWord);
                         bool isFilterOK = false;

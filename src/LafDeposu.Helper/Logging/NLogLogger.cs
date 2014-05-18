@@ -38,7 +38,7 @@ namespace LafDeposu.Helper.Logging
             // Step 3. Set target properties 
             fileTarget.FileName = fileName; ;
             fileTarget.Layout = layout;
-            fileTarget.Encoding = new UnicodeEncoding(false, true); ;
+            fileTarget.Encoding = Encoding.GetEncoding(1254);
 
             // Step 4. Wrap target with async
             AsyncTargetWrapper asyncWrapper = new AsyncTargetWrapper();

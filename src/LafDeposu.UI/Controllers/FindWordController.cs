@@ -40,7 +40,7 @@ namespace LafDeposu.UI.Controllers
             jr.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
 
             sw.Stop();
-            Logger.Info(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", chars, startsWith, contains, endsWith, sw.Elapsed, sw.Elapsed.TotalMilliseconds));
+            Logger.Info(string.Format("{0}\t{1}\t{2}\t{3}\t{4}", chars, startsWith, contains, endsWith, sw.Elapsed));
             return jr;
         }
     }

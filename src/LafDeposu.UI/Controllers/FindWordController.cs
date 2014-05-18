@@ -18,7 +18,7 @@ namespace LafDeposu.UI.Controllers
         }
 
         [HttpGet]
-        [OutputCache(Duration = 300, VaryByParam = "startsWith;contains;endsWith")]
+        [OutputCache(Duration = 300, VaryByParam = "startsWith;contains;endsWith;showTwoChars")]
         public JsonResult Get(string chars)
         {
             Stopwatch sw = Stopwatch.StartNew();
@@ -26,9 +26,12 @@ namespace LafDeposu.UI.Controllers
             string startsWith = Request.QueryString["startsWith"];
             string contains = Request.QueryString["contains"];
             string endsWith = Request.QueryString["endsWith"];
+            string showTwoCharsStr = Request.QueryString["showTwoChars"];
+            bool showTwoChars;
+            bool.TryParse(showTwoCharsStr, out showTwoChars);
 
             FindWordHelper help = new FindWordHelper(ConfigurationManager.ConnectionStrings["MySql"].ConnectionString, DataAccessType.MySql);
-            WordList wl = help.CreateResult(chars, startsWith, contains, endsWith);
+            WordList wl = help.CreateResult(chars, startsWith, contains, endsWith, showTwoChars);
 
             JsonResult jr = new JsonResult();
             jr.ContentEncoding = System.Text.Encoding.GetEncoding(1254);

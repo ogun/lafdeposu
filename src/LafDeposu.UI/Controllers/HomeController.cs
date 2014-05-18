@@ -22,13 +22,14 @@ namespace LafDeposu.UI.Controllers
         {
             SearchShare ss = new SearchShare();
 
-            string keywod = Request.QueryString["keyword"];
-            if (!string.IsNullOrEmpty(keywod))
+            string keyword = Request.QueryString["keyword"];
+            if (!string.IsNullOrEmpty(keyword))
             {
-                ss.Keyword = keywod;
+                ss.Keyword = keyword;
                 ss.StartsWith = Request.QueryString["startsWith"];
                 ss.Contains = Request.QueryString["contains"];
                 ss.EndsWith = Request.QueryString["endsWith"];
+                ss.ShowTwoChars = Request.QueryString["showTwoChars"];
             }
 
             return View(ss);

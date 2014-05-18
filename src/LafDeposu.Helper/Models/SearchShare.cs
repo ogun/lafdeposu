@@ -12,5 +12,6 @@ namespace LafDeposu.Helper.Models
         public string StartsWith { get; set; }
         public string Contains { get; set; }
         public string EndsWith { get; set; }
+        public string ShowTwoChars { get; set; }
     }
 }

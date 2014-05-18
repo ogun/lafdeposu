@@ -23,20 +23,27 @@
     </div>
 
     <div id="filterAncContainer" class="row">
-        <div class="col-md-12 text-right">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="showTwoChars" ng-model="showTwoChars"> İki harfli kelimeleri göster
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 text-right">
             <a id="filterAnchor" href="#">Filtre</a> <a href="/Yardim/#Filtre" title="Yardım">?</a>
         </div>
     </div>
 
     <div id="filters" class="row hidden">
-        <div class="col-md-4 text-right">
-           <input type="text" id="startsWith" name="srch-term" class="form-control" placeholder="Başlayan" ng-model="startsWith">
+        <div class="col-md-4">
+            <input type="text" id="startsWith" name="startsWith" class="form-control" placeholder="Başlayan" ng-model="startsWith">
         </div>
-        <div class="col-md-4 text-right">
-           <input type="text" id="contains" name="srch-term" class="form-control" placeholder="İçeren" ng-model="contains">
+        <div class="col-md-4">
+            <input type="text" id="contains" name="contains" class="form-control" placeholder="İçeren" ng-model="contains">
         </div>
-        <div class="col-md-4 text-right">
-           <input type="text" id="endsWith" name="srch-term" class="form-control" placeholder="Biten" ng-model="endsWith">
+        <div class="col-md-4">
+            <input type="text" id="endsWith" name="endsWith" class="form-control" placeholder="Biten" ng-model="endsWith">
         </div>
     </div>
 
@@ -72,25 +79,32 @@
 {
     @Scripts.Render("~/bundles/index")
 
-    @if(!string.IsNullOrEmpty(Model.Keyword))
+    @if (!string.IsNullOrEmpty(Model.Keyword))
     {
         <script type="text/javascript">
-            $(function () {
-                $("#srch-term").val("@Model.Keyword");
+        $(function () {
+            $("#srch-term").val("@Model.Keyword");
 
-                @if (!string.IsNullOrEmpty(Model.StartsWith) || !string.IsNullOrEmpty(Model.Contains) || !string.IsNullOrEmpty(Model.EndsWith))
-                {
+            @if (!string.IsNullOrEmpty(Model.StartsWith) || !string.IsNullOrEmpty(Model.Contains) || !string.IsNullOrEmpty(Model.EndsWith))
+            {
                 <text>
                 $("#startsWith").val("@Model.StartsWith");
                 $("#contains").val("@Model.Contains");
                 $("#endsWith").val("@Model.EndsWith");
                 $("#filterAnchor").trigger("click");
                 </text>
-                }
+            }
+        
+            @if (!string.IsNullOrEmpty(Model.ShowTwoChars))
+            {
+                <text>
+                    $("#showTwoChars").trigger("click");
+                </text>
+            }
 
-                $("input").trigger("input");
-                $("#srch-button").click();
-            });
+            $("input").trigger("input");
+            $("#srch-button").click();
+        });
         </script>
-    }    
+    }
 }

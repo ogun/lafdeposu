@@ -50,7 +50,7 @@ findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", function
             startsWith: $scope.startsWith,
             contains: $scope.contains,
             endsWith: $scope.endsWith,
-            resultCharCount: $scope.resultCharCount ? 2 : null
+            resultCharCount: $scope.resultCharCount
         });
 
         $scope.wordList.$promise["finally"](function () {

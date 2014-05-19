@@ -88,7 +88,7 @@ namespace LafDeposu.Helper
             return returnValue;
         }
 
-        private string CreateCommandText(string input, bool showTwoChars)
+        private string CreateCommandText(string input, int? resultCharCount)
         {
             StringBuilder commandText = new StringBuilder();
 
@@ -112,20 +112,20 @@ namespace LafDeposu.Helper
             }
 
             // Sadece iki harfli sonuçları getirebilir
-            if (!showTwoChars)
+            if (!resultCharCount.HasValue)
             {
                 commandText.AppendFormat("length <= {0} AND length > 2 ORDER BY length DESC, word", inputLength);
             }
             else
             {
-                commandText.AppendFormat("length = 2 ORDER BY length DESC, word");
+                commandText.AppendFormat("length = {0} ORDER BY length DESC, word", resultCharCount);
             }
             
 
             return commandText.ToString();
         }
 
-        public WordList CreateResult(string input, string startsWith, string contains, string endsWith, bool showTwoChars)
+        public WordList CreateResult(string input, string startsWith, string contains, string endsWith, int? resultCharCount)
         {
             if (string.IsNullOrEmpty(input))
             {
@@ -152,7 +152,7 @@ namespace LafDeposu.Helper
             
             WordList returnValue = new WordList();
 
-            string commandText = CreateCommandText(input, showTwoChars);
+            string commandText = CreateCommandText(input, resultCharCount);
 
             using (DataTable dataTable = GetDataTable(commandText, ConnectionString))
             {

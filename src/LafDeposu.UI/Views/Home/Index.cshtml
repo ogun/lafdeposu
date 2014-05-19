@@ -26,7 +26,7 @@
         <div class="col-md-6">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" id="showTwoChars" ng-model="showTwoChars"> İki harfli kelimeleri göster
+                    <input type="checkbox" id="resultCharCount" ng-model="resultCharCount"> İki harfli kelimeleri göster
                 </label>
             </div>
         </div>
@@ -95,10 +95,10 @@
                 </text>
             }
         
-            @if (!string.IsNullOrEmpty(Model.ShowTwoChars))
+            @if (Model.ResultCharCount.HasValue && Model.ResultCharCount.Value.Equals(2))
             {
                 <text>
-                    $("#showTwoChars").trigger("click");
+                $("#resultCharCount").trigger("click");
                 </text>
             }
 

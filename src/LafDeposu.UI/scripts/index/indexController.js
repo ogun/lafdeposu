@@ -2,12 +2,12 @@
 
 findWordsApp.factory("FindWord", ["$resource", function ($resource) {
     return {
-        database: $resource("FindWord/:chars?startsWith=:startsWith&contains=:contains&endsWith=:endsWith&showTwoChars=:showTwoChars")
+        database: $resource("FindWord/:chars?startsWith=:startsWith&contains=:contains&endsWith=:endsWith&resultCharCount=:resultCharCount")
     }
 }]);
 
 findWordsApp.factory("Share", function () {
-    createLink = function (chars, startsWith, contains, endsWith, showTwoChars) {
+    createLink = function (chars, startsWith, contains, endsWith, resultCharCount) {
         var returnValue = {};
         returnValue.queryString = "";
 
@@ -26,8 +26,8 @@ findWordsApp.factory("Share", function () {
                 returnValue.queryString += "&endsWith=" + endsWith;
             }
 
-            if (showTwoChars != null && showTwoChars != "") {
-                returnValue.queryString += "&showTwoChars=" + showTwoChars;
+            if (resultCharCount != null && resultCharCount != "") {
+                returnValue.queryString += "&resultCharCount=" + resultCharCount;
             }
         }
 
@@ -50,13 +50,13 @@ findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", function
             startsWith: $scope.startsWith,
             contains: $scope.contains,
             endsWith: $scope.endsWith,
-            showTwoChars: $scope.showTwoChars
+            resultCharCount: $scope.resultCharCount ? 2 : null
         });
 
         $scope.wordList.$promise["finally"](function () {
             $loadingContainer.addClass("hide");
 
-            $scope.share = Share.createLink($scope.chars, $scope.startsWith, $scope.contains, $scope.endsWith, $scope.showTwoChars);
+            $scope.share = Share.createLink($scope.chars, $scope.startsWith, $scope.contains, $scope.endsWith, $scope.resultCharCount);
         });
     }
 }]);

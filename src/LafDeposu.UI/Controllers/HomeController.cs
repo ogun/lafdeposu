@@ -29,7 +29,16 @@ namespace LafDeposu.UI.Controllers
                 ss.StartsWith = Request.QueryString["startsWith"];
                 ss.Contains = Request.QueryString["contains"];
                 ss.EndsWith = Request.QueryString["endsWith"];
-                ss.ShowTwoChars = Request.QueryString["showTwoChars"];
+
+                string resultCharCountStr = Request.QueryString["resultCharCount"];
+                if (!string.IsNullOrEmpty(resultCharCountStr))
+                {
+                    int tmpResultCharCount;
+                    if (int.TryParse(resultCharCountStr, out tmpResultCharCount))
+                    {
+                        ss.ResultCharCount = tmpResultCharCount;
+                    }
+                }
             }
 
             return View(ss);

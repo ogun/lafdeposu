@@ -27,7 +27,7 @@ findWordsApp.factory("Share", function () {
             }
 
             if (resultCharCount != null && resultCharCount != "") {
-                returnValue.queryString += "&resultCharCount=" + resultCharCount;
+                returnValue.queryString += "&resultCharCount=2";
             }
         }
 
@@ -50,7 +50,7 @@ findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", function
             startsWith: $scope.startsWith,
             contains: $scope.contains,
             endsWith: $scope.endsWith,
-            resultCharCount: $scope.resultCharCount
+            resultCharCount: $scope.resultCharCount ? 2 : null
         });
 
         $scope.wordList.$promise["finally"](function () {

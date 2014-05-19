@@ -34,7 +34,7 @@ namespace LafDeposu.UI
         {
             ContainerBuilder builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly());
-            builder.RegisterType<NLogger>().As<ILogger>().InstancePerHttpRequest();
+            builder.RegisterType<NLogger>().As<ILogger>().InstancePerRequest();
 
             IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

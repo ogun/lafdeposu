@@ -1,4 +1,4 @@
-﻿table td:first-child {
+﻿.table-detail td:first-child {
      width: 140px;
      font-weight: bold;
 }

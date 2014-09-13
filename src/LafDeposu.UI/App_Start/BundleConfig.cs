@@ -20,6 +20,7 @@ namespace LafDeposu.UI
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/scripts/angular.js",
                         "~/scripts/angular-resource.js",
+                        "~/scripts/angular-cookies.js",
                         "~/scripts/index/indexController.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/analytics").Include(

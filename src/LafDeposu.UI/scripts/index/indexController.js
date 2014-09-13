@@ -1,4 +1,4 @@
-﻿var findWordsApp = angular.module("findWordsApp", ["ngResource"]);
+﻿var findWordsApp = angular.module("findWordsApp", ["ngResource", "ngCookies"]);
 
 findWordsApp.factory("FindWord", ["$resource", function ($resource) {
     return {
@@ -7,7 +7,7 @@ findWordsApp.factory("FindWord", ["$resource", function ($resource) {
 }]);
 
 findWordsApp.factory("Share", function () {
-    createLink = function (chars, startsWith, contains, endsWith, resultCharCount) {
+    var createLink = function (chars, startsWith, contains, endsWith, resultCharCount) {
         var returnValue = {};
         returnValue.queryString = "";
 
@@ -39,24 +39,41 @@ findWordsApp.factory("Share", function () {
     }
 });
 
-findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", function ($scope, FindWord, Share) {
+findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", "$cookies", function ($scope, FindWord, Share, $cookies) {
+        $scope.listType = $cookies.listType;
 
-    $scope.findWordsClick = function () {
-        $loadingContainer = $("#loadingContainer");
-        $loadingContainer.removeClass("hide");
+        $scope.findWordsClick = function () {
+            $loadingContainer = $("#loadingContainer");
+            $loadingContainer.removeClass("hide");
 
-        $scope.wordList = FindWord.database.query({
-            chars: $scope.chars,
-            startsWith: $scope.startsWith,
-            contains: $scope.contains,
-            endsWith: $scope.endsWith,
-            resultCharCount: $scope.resultCharCount ? 2 : null
-        });
+            $scope.wordList = FindWord.database.query({
+                chars: $scope.chars,
+                startsWith: $scope.startsWith,
+                contains: $scope.contains,
+                endsWith: $scope.endsWith,
+                resultCharCount: $scope.resultCharCount ? 2 : null
+            });
+
 
         $scope.wordList.$promise["finally"](function () {
             $loadingContainer.addClass("hide");
 
+            $scope.wordList.maxRowCount = function () {
+                var maxRow = Math.max.apply(Math, $.map($scope.wordList, function (el) { return el.words.length; }));
+                var arr = new Array(maxRow);
+                for (var i = 0; i < maxRow; i++) {
+                    arr[i] = i;
+                }
+                return arr;
+            }
+
             $scope.share = Share.createLink($scope.chars, $scope.startsWith, $scope.contains, $scope.endsWith, $scope.resultCharCount);
         });
+
+        // Kullanıcının tercihini kaydedelim
+        $scope.changeListType = function (value) {
+            $cookies.listType = value;
+            $scope.listType = value;
+        }
     }
 }]);

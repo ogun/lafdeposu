@@ -2,7 +2,7 @@
 
 findWordsApp.factory("FindWord", ["$resource", function ($resource) {
     return {
-        database: $resource("FindWord/:chars?startsWith=:startsWith&contains=:contains&endsWith=:endsWith&resultCharCount=:resultCharCount")
+        database: $resource("Kelime/Getir/:chars?startsWith=:startsWith&contains=:contains&endsWith=:endsWith&resultCharCount=:resultCharCount")
     }
 }]);
 
@@ -40,20 +40,19 @@ findWordsApp.factory("Share", function () {
 });
 
 findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", "$cookies", function ($scope, FindWord, Share, $cookies) {
-        $scope.listType = $cookies.listType;
+    $scope.listType = $cookies.listType;
 
-        $scope.findWordsClick = function () {
-            $loadingContainer = $("#loadingContainer");
-            $loadingContainer.removeClass("hide");
+    $scope.findWordsClick = function () {
+        $loadingContainer = $("#loadingContainer");
+        $loadingContainer.removeClass("hide");
 
-            $scope.wordList = FindWord.database.query({
-                chars: $scope.chars,
-                startsWith: $scope.startsWith,
-                contains: $scope.contains,
-                endsWith: $scope.endsWith,
-                resultCharCount: $scope.resultCharCount ? 2 : null
-            });
-
+        $scope.wordList = FindWord.database.query({
+            chars: $scope.chars,
+            startsWith: $scope.startsWith,
+            contains: $scope.contains,
+            endsWith: $scope.endsWith,
+            resultCharCount: $scope.resultCharCount ? 2 : null
+        });
 
         $scope.wordList.$promise["finally"](function () {
             $loadingContainer.addClass("hide");
@@ -69,11 +68,13 @@ findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", "$cookie
 
             $scope.share = Share.createLink($scope.chars, $scope.startsWith, $scope.contains, $scope.endsWith, $scope.resultCharCount);
         });
+    }
 
-        // Kullanıcının tercihini kaydedelim
-        $scope.changeListType = function (value) {
-            $cookies.listType = value;
-            $scope.listType = value;
-        }
+
+
+    // Kullanıcının tercihini kaydedelim
+    $scope.changeListType = function (value) {
+        $cookies.listType = value;
+        $scope.listType = value;
     }
 }]);

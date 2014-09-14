@@ -14,6 +14,10 @@ namespace LafDeposu.UI
             bundles.Add(new ScriptBundle("~/bundles/index").Include(
                         "~/scripts/index/bottom.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kelimeEkle").Include(
+                        "~/scripts/kelimeEkle/bottom.js",
+                        "~/scripts/jquery.growl.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                         "~/scripts/bootstrap.js"));
 
@@ -21,7 +25,8 @@ namespace LafDeposu.UI
                         "~/scripts/angular.js",
                         "~/scripts/angular-resource.js",
                         "~/scripts/angular-cookies.js",
-                        "~/scripts/index/indexController.js"));
+                        "~/scripts/index/indexController.js",
+                        "~/scripts/kelimeEkle/kelimeEkleController.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/analytics").Include(
                         "~/scripts/_layout/analytics.js"));
@@ -36,6 +41,9 @@ namespace LafDeposu.UI
 
             bundles.Add(new StyleBundle("~/sbundles/index").Include(
                         "~/content/css/index/style.css"));
+
+            bundles.Add(new StyleBundle("~/sbundles/kelimeEkle").Include(
+                        "~/content/jquery.growl.css"));
         }
     }
 }

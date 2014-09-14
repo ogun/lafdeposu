@@ -4,7 +4,7 @@ namespace LafDeposu.Helper.Data
 {
     public class DataAccessFactory
     {
-        public static IDataAccess CreateDataAccess(DataAccessType access)
+        public static IDataAccess CreateDataAccess(DataAccessType access, string connectionString)
         {
             IDataAccess returnValue = null;
 
@@ -22,6 +22,8 @@ namespace LafDeposu.Helper.Data
                 default:
                     throw new NotImplementedException();
             }
+
+            returnValue.ConnectionString = connectionString;
 
             return returnValue;
         }

@@ -14,9 +14,9 @@ namespace LafDeposu.UI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "FindWord",
-                url: "FindWord/{chars}",
-                defaults: new { controller = "FindWord", action = "Get", chars = UrlParameter.Optional }
+                name: "KelimeIslemleri",
+                url: "Kelime/{action}/{word}",
+                defaults: new { controller = "Kelime", action = "Getir", word = UrlParameter.Optional }
             );
 
             routes.MapRoute(

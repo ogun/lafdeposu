@@ -11,12 +11,12 @@ namespace LafDeposu.Helper
     public class FindWordHelper
     {
         public string ConnectionString { get; private set; }
-        public DataAccessType DataAccessType { get; private set; }
+        public IDataAccess DataProccessor { get; private set; }
 
         public FindWordHelper(string connectionString, DataAccessType dataAccessType)
         {
             this.ConnectionString = connectionString;
-            this.DataAccessType = dataAccessType;
+            DataProccessor = DataAccessFactory.CreateDataAccess(dataAccessType, connectionString); ;
         }
 
         private bool ControlDbWord(string input, string dbWord)
@@ -154,7 +154,7 @@ namespace LafDeposu.Helper
 
             string commandText = CreateCommandText(input, resultCharCount);
 
-            using (DataTable dataTable = GetDataTable(commandText, ConnectionString))
+            using (DataTable dataTable = GetDataTable(commandText))
             {
                 if (dataTable.Rows.Count > 0)
                 {
@@ -233,10 +233,36 @@ namespace LafDeposu.Helper
             return true;
         }
 
-        private DataTable GetDataTable(string commandText, string connectionString)
+        private DataTable GetDataTable(string commandText)
         {
-            IDataAccess dataProccessor = DataAccessFactory.CreateDataAccess(DataAccessType);
-            return dataProccessor.GetDataTable(commandText, connectionString);
+            return DataProccessor.GetDataTable(commandText);
+        }
+
+        public WordResponse AddWord(string word, string meaning)
+        {
+            WordResponse returnValue = new WordResponse();
+
+            word = word.Trim();
+            word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
+
+            meaning = meaning.Trim();
+
+            int effectedRowCount = DataProccessor.InsertWord(word, meaning);
+
+            if (effectedRowCount.Equals(1))
+            {
+                returnValue.Type = WordResponseType.Notice;
+                returnValue.Title = "Kayıt Eklendi";
+                returnValue.Message = string.Format("{0} veritabanına eklendi.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+            else
+            {
+                returnValue.Type = WordResponseType.Warning;
+                returnValue.Title = "Varolan Kayıt";
+                returnValue.Message = string.Format("{0} veritabanında mevcut.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+
+            return returnValue;
         }
     }
 }

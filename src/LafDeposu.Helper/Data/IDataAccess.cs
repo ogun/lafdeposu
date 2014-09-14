@@ -1,9 +1,14 @@
-﻿using System.Data;
+﻿using LafDeposu.Helper.Models;
+using System.Data;
 
 namespace LafDeposu.Helper.Data
 {
-    public interface IDataAccess
+    public abstract class IDataAccess
     {
-        DataTable GetDataTable(string commandText, string connectionString);
+        public string ConnectionString { get; set; }
+
+        public abstract DataTable GetDataTable(string commandText);
+
+        public abstract int InsertWord(string word, string meaning);
     }
 }

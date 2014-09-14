@@ -55,5 +55,11 @@ namespace LafDeposu.UI.Controllers
         {
             return View();
         }
+
+        [ActionName("Kelime-Ekle")]
+        public ActionResult KelimeEkle()
+        {
+            return View();
+        }
     }
 }

@@ -139,7 +139,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\FindWordController.cs" />
+    <Compile Include="Controllers\KelimeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -155,6 +155,7 @@
     <Content Include="content\css\_layout\style.css" />
     <Content Include="content\img\ajax-loader.gif" />
     <Content Include="content\img\favicon.ico" />
+    <Content Include="content\jquery.growl.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="scripts\angular-cookies.js" />
     <Content Include="scripts\angular-cookies.min.js" />
@@ -165,6 +166,9 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery.growl.js" />
+    <Content Include="scripts\kelimeEkle\bottom.js" />
+    <Content Include="scripts\kelimeEkle\kelimeEkleController.js" />
     <Content Include="scripts\_layout\analytics.js" />
     <Content Include="scripts\_layout\userreport.js" />
     <Content Include="Global.asax" />
@@ -202,6 +206,7 @@
     <Content Include="Views\Home\Yardim.cshtml" />
     <Content Include="Views\Home\Iletisim.cshtml" />
     <Content Include="scripts\jquery-2.1.1.min.map" />
+    <Content Include="Views\Home\Kelime-Ekle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -70,6 +70,8 @@
     <Compile Include="Models\Word.cs" />
     <Compile Include="Models\WordGroup.cs" />
     <Compile Include="Models\WordList.cs" />
+    <Compile Include="Models\WordResponse.cs" />
+    <Compile Include="Models\WordResponseType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

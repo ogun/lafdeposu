@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Kelime Ekle | Laf Deposu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    @Styles.Render("~/sbundles/kelimeEkle")
+}
+
+<div class="row" ng-controller="wordAddCtrl">
+    <div class="col-md-12">
+        <h2>Kelime Ekle</h2>
+        <p>Bu bölümü kullanarak veritabanına kelime ekleyebilirsiniz. Eklediğiniz kelimeler sisteme hemen dahil olurlar ve daha sonra kontrolden geçerler. Kontrol sonucunda uygun bulunmayan kelimeler sistemden çıkarılır.</p>
+        <form role="form">
+            <div class="form-group">
+                <label for="word">Kelime</label>
+                <input type="text" class="form-control" id="word" placeholder="Kelimeyi giriniz" required="required" ng-model="word">
+            </div>
+            <div class="form-group">
+                <label for="meaning">Kelimenin Anlamı</label>
+                <input type="text" class="form-control" id="meaning" placeholder="Kelimenin anlamını giriniz" required="required" ng-model="meaning">
+            </div>
+            <button type="submit" class="btn btn-default" ng-click="addWordClick()">Ekle</button>
+        </form>
+    </div>
+</div>
+<div id="loadingContainer" class="row hide">
+    <div class="col-md-12 small text-center">
+        <div id="loading"><img src="~/content/img/ajax-loader.gif" alt="Yükleniyor" width="32" height="32" /> Yükleniyor lütfen bekleyiniz</div>
+    </div>
+</div>
+@section scriptsBottom
+{
+    @Scripts.Render("~/bundles/kelimeEkle")
+}

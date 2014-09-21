@@ -20,8 +20,8 @@ namespace LafDeposu.UI.Controllers
         public KelimeController(ILogger logger)
         {
             Logger = logger;
-            ConnectionString = ConfigurationManager.ConnectionStrings["MsSql"].ConnectionString;
-            AccessType = DataAccessType.MsSql;
+            ConnectionString = ConfigurationManager.ConnectionStrings["MySql"].ConnectionString;
+            AccessType = DataAccessType.MySql;
         }
 
         [HttpGet]

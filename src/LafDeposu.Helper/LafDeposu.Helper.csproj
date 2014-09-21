@@ -66,6 +66,7 @@
     <Compile Include="Data\IDataAccess.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\NLogLogger.cs" />
+    <Compile Include="Models\InsertedWord.cs" />
     <Compile Include="Models\SearchShare.cs" />
     <Compile Include="Models\Word.cs" />
     <Compile Include="Models\WordGroup.cs" />

@@ -1,11 +1,7 @@
-﻿using LafDeposu.Helper.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LafDeposu.Helper.Data
 {
@@ -69,6 +65,26 @@ namespace LafDeposu.Helper.Data
             }
 
             return returnValue;
+        }
+
+        public override int ExecuteCommand(string commandText)
+        {
+            using (SqlCommand cmd = new SqlCommand(commandText))
+            {
+                return ExecuteCommand(cmd);
+            }
+        }
+
+        public override int ExecuteCommand(string commandText, Dictionary<string, string> parameters)
+        {
+            using (SqlCommand cmd = new SqlCommand(commandText))
+            {
+                foreach (var item in parameters)
+                {
+                    cmd.Parameters.AddWithValue(item.Key, item.Value);
+                }
+                return ExecuteCommand(cmd);
+            }
         }
     }
 }

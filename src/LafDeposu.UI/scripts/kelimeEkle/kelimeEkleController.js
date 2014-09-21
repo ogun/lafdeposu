@@ -26,8 +26,6 @@ findWordsApp.controller("wordAddCtrl", ["$scope", "AddWord", function ($scope, A
                 case 1: $.growl.notice(message); break;
                 default: $.growl.warning(message);
             }
-
-            console.log(message);
         });
     }
 

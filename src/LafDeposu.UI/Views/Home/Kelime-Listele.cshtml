@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Kelime Listele | Laf Deposu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles
+{
+    @Styles.Render("~/sbundles/kelimeListele")
+}
+
+<div ng-controller="wordListCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Kelime Listele</h2>
+            <p>Bu bölümü kullanarak veritabanına eklenen kelimeleri düzenleyebilir, onaylayabilir ya da silebilirsiniz.</p>
+        </div>
+    </div>
+    <div class="row ng-cloak">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>Kelime</th>
+                    <th>Anlamı</th>
+                    <th class="shrinkColumn">&nbsp;</th>
+                </tr>
+                <tr ng-repeat="item in wordList">
+                    <td><input type="text" class="form-control" id="word{{item.ID}}" value="{{item.Word}}" /></td>
+                    <td><input type="text" class="form-control" id="meaning{{item.ID}}" value="{{item.Meaning}}" /></td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" ng-click="updateWord(item.ID)"><span class="glyphicon glyphicon-pencil"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="approveWord(item.ID)"><span class="glyphicon glyphicon-ok"></span></button>
+                            <button type="button" class="btn btn-default" ng-click="removeWord(item.ID)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="loadingContainer" class="row hide">
+        <div class="col-md-12 small text-center">
+            <div id="loading"><img src="~/content/img/ajax-loader.gif" alt="Yükleniyor" width="32" height="32" /> Yükleniyor lütfen bekleyiniz</div>
+        </div>
+    </div>
+</div>
+@section scriptsBottom
+{
+    @Scripts.Render("~/bundles/kelimeListele")
+}

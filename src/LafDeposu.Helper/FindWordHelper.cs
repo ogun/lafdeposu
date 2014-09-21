@@ -238,6 +238,11 @@ namespace LafDeposu.Helper
             return DataProccessor.GetDataTable(commandText);
         }
 
+        private int ExecuteCommand(string commandText)
+        {
+            return DataProccessor.ExecuteCommand(commandText);
+        }
+
         public WordResponse AddWord(string word, string meaning)
         {
             WordResponse returnValue = new WordResponse();
@@ -260,6 +265,120 @@ namespace LafDeposu.Helper
                 returnValue.Type = WordResponseType.Warning;
                 returnValue.Title = "Varolan Kayıt";
                 returnValue.Message = string.Format("{0} veritabanında mevcut.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+
+            return returnValue;
+        }
+
+        public List<InsertedWord> GetInsertedList()
+        {
+            List<InsertedWord> returnValue = new List<InsertedWord>();
+
+            string commandText = "SELECT id, word, meaning FROM Word WHERE confirm = 1 ORDER BY word";
+
+            DataTable dt = GetDataTable(commandText);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    InsertedWord iw = new InsertedWord();
+                    iw.ID = (int)dr["id"];
+                    iw.Word = dr["word"].ToString();
+                    iw.Meaning = dr["meaning"].ToString();
+
+                    returnValue.Add(iw);
+                }
+            }
+
+            return returnValue;
+        }
+
+        public WordResponse UpdateWord(string id, string word, string meaning)
+        {
+            WordResponse returnValue = new WordResponse();
+
+            word = word.Trim();
+            word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
+
+            meaning = meaning.Trim();
+
+            string commandText = "UPDATE Word SET word = @word, meaning = @meaning, length = @length WHERE confirm = 1 AND id = @id";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("id", id);
+            parameters.Add("word", word);
+            parameters.Add("meaning", meaning);
+            parameters.Add("length", word.Length.ToString());
+            int effectedRowCount = DataProccessor.ExecuteCommand(commandText, parameters);
+
+            if (effectedRowCount.Equals(1))
+            {
+                returnValue.Type = WordResponseType.Notice;
+                returnValue.Title = "Kayıt Güncellendi";
+                returnValue.Message = string.Format("{0} kelimesi güncellendi.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+            else
+            {
+                returnValue.Type = WordResponseType.Warning;
+                returnValue.Title = "Varolmayan Kayıt";
+                returnValue.Message = string.Format("{0} veritabanında mevcut değil.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+
+            return returnValue;
+        }
+
+        public WordResponse ApproveWord(string id, string word)
+        {
+            WordResponse returnValue = new WordResponse();
+
+            word = word.Trim();
+            word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
+
+            string commandText = "UPDATE Word SET confirm = 2 WHERE confirm = 1 AND id = @id AND word = @word";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("id", id);
+            parameters.Add("word", word);
+            int effectedRowCount = DataProccessor.ExecuteCommand(commandText, parameters);
+
+            if (effectedRowCount.Equals(1))
+            {
+                returnValue.Type = WordResponseType.Notice;
+                returnValue.Title = "Kayıt Onaylandı";
+                returnValue.Message = string.Format("{0} kelimesi onaylandı.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+            else
+            {
+                returnValue.Type = WordResponseType.Warning;
+                returnValue.Title = "Varolmayan Kayıt";
+                returnValue.Message = string.Format("{0} veritabanında mevcut değil.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+
+            return returnValue;
+        }
+
+        public WordResponse RemoveWord(string id, string word)
+        {
+            WordResponse returnValue = new WordResponse();
+
+            word = word.Trim();
+            word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
+
+            string commandText = "DELETE Word WHERE confirm = 1 AND id = @id AND word = @word";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("id", id);
+            parameters.Add("word", word);
+            int effectedRowCount = DataProccessor.ExecuteCommand(commandText, parameters);
+
+            if (effectedRowCount.Equals(1))
+            {
+                returnValue.Type = WordResponseType.Notice;
+                returnValue.Title = "Silme Onaylandı";
+                returnValue.Message = string.Format("{0} veritabanından silindi.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
+            }
+            else
+            {
+                returnValue.Type = WordResponseType.Warning;
+                returnValue.Title = "Varolmayan Kayıt";
+                returnValue.Message = string.Format("{0} veritabanında mevcut değil.", word.ToUpper(CultureInfo.GetCultureInfo("tr-TR")));
             }
 
             return returnValue;

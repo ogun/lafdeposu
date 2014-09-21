@@ -1,6 +1,4 @@
-﻿var findWordsApp = angular.module("findWordsApp", ["ngResource", "ngCookies"]);
-
-findWordsApp.factory("FindWord", ["$resource", function ($resource) {
+﻿findWordsApp.factory("FindWord", ["$resource", function ($resource) {
     return {
         database: $resource("Kelime/Getir/:chars?startsWith=:startsWith&contains=:contains&endsWith=:endsWith&resultCharCount=:resultCharCount")
     }

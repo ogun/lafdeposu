@@ -1,7 +1,7 @@
-﻿using LafDeposu.Helper.Models;
-using MySql.Data.MySqlClient;
-using System.Data;
+﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
+using System.Data;
 
 namespace LafDeposu.Helper.Data
 {
@@ -63,6 +63,26 @@ namespace LafDeposu.Helper.Data
             }
 
             return returnValue;
+        }
+
+        public override int ExecuteCommand(string commandText)
+        {
+            using (MySqlCommand cmd = new MySqlCommand(commandText))
+            {
+                return ExecuteCommand(cmd);
+            }
+        }
+
+        public override int ExecuteCommand(string commandText, Dictionary<string, string> parameters)
+        {
+            using (MySqlCommand cmd = new MySqlCommand(commandText))
+            {
+                foreach (var item in parameters)
+                {
+                    cmd.Parameters.AddWithValue(item.Key, item.Value);
+                }
+                return ExecuteCommand(cmd);
+            }
         }
     }
 }

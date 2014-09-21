@@ -152,6 +152,7 @@
     <Content Include="content\bootstrap.css" />
     <Content Include="content\bootstrap.min.css" />
     <Content Include="content\css\index\style.css" />
+    <Content Include="content\css\kelimeListele\style.css" />
     <Content Include="content\css\_layout\style.css" />
     <Content Include="content\img\ajax-loader.gif" />
     <Content Include="content\img\favicon.ico" />
@@ -169,7 +170,9 @@
     <Content Include="scripts\jquery.growl.js" />
     <Content Include="scripts\kelimeEkle\bottom.js" />
     <Content Include="scripts\kelimeEkle\kelimeEkleController.js" />
+    <Content Include="scripts\kelimeListele\kelimeListeleController.js" />
     <Content Include="scripts\_layout\analytics.js" />
+    <Content Include="scripts\_layout\angModule.js" />
     <Content Include="scripts\_layout\userreport.js" />
     <Content Include="Global.asax" />
     <Content Include="scripts\index\indexController.js" />
@@ -207,6 +210,7 @@
     <Content Include="Views\Home\Iletisim.cshtml" />
     <Content Include="scripts\jquery-2.1.1.min.map" />
     <Content Include="Views\Home\Kelime-Ekle.cshtml" />
+    <Content Include="Views\Home\Kelime-Listele.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

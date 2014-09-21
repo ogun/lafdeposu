@@ -56,8 +56,16 @@ namespace LafDeposu.UI.Controllers
             return View();
         }
 
+        // GET: /Kelime-Ekle/
         [ActionName("Kelime-Ekle")]
         public ActionResult KelimeEkle()
+        {
+            return View();
+        }
+
+        // GET: /Kelime-Listele/
+        [ActionName("Kelime-Listele")]
+        public ActionResult KelimeListele()
         {
             return View();
         }

@@ -362,7 +362,7 @@ namespace LafDeposu.Helper
             word = word.Trim();
             word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
 
-            string commandText = "DELETE Word WHERE confirm = 1 AND id = @id AND word = @word";
+            string commandText = "DELETE FROM Word WHERE confirm = 1 AND id = @id AND word = @word";
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("id", id);
             parameters.Add("word", word);

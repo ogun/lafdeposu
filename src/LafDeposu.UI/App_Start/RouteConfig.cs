@@ -20,9 +20,33 @@ namespace LafDeposu.UI
             );
 
             routes.MapRoute(
+                name: "Kelime-Ekle",
+                url: "Kelime-Ekle",
+                defaults: new { controller = "Home", action = "Kelime-Ekle" }
+            );
+
+            routes.MapRoute(
+                name: "Kelime-Listele",
+                url: "Kelime-Listele",
+                defaults: new { controller = "Home", action = "Kelime-Listele" }
+            );
+
+            routes.MapRoute(
+                name: "Iletisim",
+                url: "Iletisim",
+                defaults: new { controller = "Home", action = "Iletisim" }
+            );
+
+            routes.MapRoute(
+                name: "Yardim",
+                url: "Yardim",
+                defaults: new { controller = "Home", action = "Yardim" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
-                url: "{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{word}",
+                defaults: new { controller = "Home", action = "Index", word = UrlParameter.Optional }
             );
         }
     }

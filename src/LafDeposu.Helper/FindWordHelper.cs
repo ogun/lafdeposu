@@ -301,6 +301,7 @@ namespace LafDeposu.Helper
             word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
 
             meaning = meaning.Trim();
+            meaning = meaning.Trim('.');
 
             string commandText = "UPDATE Word SET word = @word, meaning = @meaning, length = @length WHERE confirm = 1 AND id = @id";
             Dictionary<string, string> parameters = new Dictionary<string, string>();

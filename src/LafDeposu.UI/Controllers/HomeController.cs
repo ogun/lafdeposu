@@ -18,11 +18,27 @@ namespace LafDeposu.UI.Controllers
         }
 
         // GET: /Home/
-        public ActionResult Index()
+        public ActionResult Index(string word)
         {
             SearchShare ss = new SearchShare();
 
+            ViewBag.Title = "Laf Deposu";
+            ViewBag.Description = "Girdiğiniz harflerle oluşabilecek Türkçe kelimeleri üreten bir internet sitesi.";
+            ViewBag.Keywords = "laf deposu, türkçe kelimeler, kelimelik oyunu hile, scrabble hile";
+
             string keyword = Request.QueryString["keyword"];
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                keyword = word;
+
+                if (!string.IsNullOrWhiteSpace(word))
+                {
+                    ViewBag.Title = string.Format("{0} | Laf Deposu", word);
+                    ViewBag.Description = string.Format("{0} kelimesinin anlamı ve {0} kelimesinin harfleriyle oluşturulabilecek Türkçe kelimeler.", word);
+                    ViewBag.Keywords = string.Format("{0} anlamı, {0} ne demek, {0} nedir, {0} hakkında bilgi, {0} kelimesinin harfleriyle oluşturulabilecek kelimeler", word);
+                }
+            }
+
             if (!string.IsNullOrEmpty(keyword))
             {
                 ss.Keyword = keyword;

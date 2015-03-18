@@ -24,3 +24,12 @@ $("#filterAnchor").on("click", function () {
         $filterAnchor.addClass("active");
     }
 });
+
+$("#edit-button").on("click", function () {
+    $("button[id^='trk-']").toggleClass("hidden");
+});
+
+$("button[id^='trk-']").on("click", function () {
+    var $src = $("#srch-term");
+    $src.val($src.val() + $(this).html());
+});

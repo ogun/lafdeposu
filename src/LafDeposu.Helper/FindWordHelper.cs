@@ -251,6 +251,7 @@ namespace LafDeposu.Helper
             word = word.ToLower(CultureInfo.GetCultureInfo("tr-TR"));
 
             meaning = meaning.Trim();
+            meaning = meaning.Trim('.');
 
             int effectedRowCount = DataProccessor.InsertWord(word, meaning);
 

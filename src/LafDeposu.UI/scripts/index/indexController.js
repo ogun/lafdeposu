@@ -37,7 +37,7 @@ findWordsApp.factory("Share", function () {
     }
 });
 
-findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", "$cookies", function ($scope, FindWord, Share, $cookies) {
+findWordsApp.controller("wordListCtrl", ["$scope", "$sce", "FindWord", "Share", "$cookies", function ($scope, $sce, FindWord, Share, $cookies) {
     $scope.listType = $cookies.listType;
 
     $scope.findWordsClick = function () {
@@ -62,6 +62,24 @@ findWordsApp.controller("wordListCtrl", ["$scope", "FindWord", "Share", "$cookie
                     arr[i] = i;
                 }
                 return arr;
+            }
+            
+            for (var i = 0; i < $scope.wordList.length; i++) {
+                var wordGroup = $scope.wordList[i];
+
+                for (var j = 0; j < wordGroup.words.length; j++) {
+                    var word = wordGroup.words[j].w;
+                    var jokers = wordGroup.words[j].j.split("");
+
+                    for (var k = 0; k < jokers.length; k++) {
+                        var joker = jokers[k];
+
+                        var regex = new RegExp(joker + "(?!<)", "");
+                        word = word.replace(regex, "<span class=\"j\">" + joker + "</span>");
+                    }
+
+                    $scope.wordList[i].words[j].w = $sce.trustAsHtml(word);
+                }
             }
 
             $scope.share = Share.createLink($scope.chars, $scope.startsWith, $scope.contains, $scope.endsWith, $scope.resultCharCount);

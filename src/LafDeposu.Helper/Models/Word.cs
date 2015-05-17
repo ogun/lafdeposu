@@ -7,5 +7,6 @@ namespace LafDeposu.Helper.Models
     {
         public string w { get; set; }
         public string m { get; set; }
+        public string j { get; set; }
     }
 }

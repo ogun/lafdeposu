@@ -189,7 +189,7 @@ namespace LafDeposu.Helper
                                 dbWordLength = dbWord.Length;
                             }
 
-                            Word w = new Word { w = dbWord.ToUpper(CultureInfo.GetCultureInfo("tr-TR")), m = dbMeaning };
+                            Word w = new Word { w = dbWord.ToUpper(CultureInfo.GetCultureInfo("tr-TR")), m = dbMeaning, j = ListJokerChars(input, dbWord).ToUpper(CultureInfo.GetCultureInfo("tr-TR")) };
                             wg.words.Add(w);
                         }
                     }
@@ -200,6 +200,18 @@ namespace LafDeposu.Helper
                     }
                 }
             }
+
+            return returnValue;
+        }
+
+        private string ListJokerChars(string input, string dbWord) {
+            string returnValue = string.Empty;
+
+            foreach (char oldChar in input) {
+                var regex = new Regex(Regex.Escape(oldChar.ToString()));
+                dbWord = regex.Replace(dbWord, string.Empty, 1);
+            }
+            returnValue = dbWord;
 
             return returnValue;
         }

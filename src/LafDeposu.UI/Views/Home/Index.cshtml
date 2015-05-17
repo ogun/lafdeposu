@@ -96,7 +96,7 @@
                     <tbody>
                         <tr ng-repeat="key in wordList.maxRowCount()">
                             <td ng-repeat="item in wordList">
-                                <span title="{{item.words[key].m}}">{{item.words[key].w}}</span>
+                                <div title="{{item.words[key].m}}" ng-bind-html="item.words[key].w"></div>
                             </td>
                         </tr>
                     </tbody>
@@ -107,7 +107,7 @@
                 <table class="table table-striped table-detail" ng-repeat-end>
                     <tbody>
                         <tr ng-repeat="word in item.words">
-                            <td>{{word.w}}</td>
+                            <td><div ng-bind-html="word.w"></div></td>
                             <td>{{word.m}}</td>
                         </tr>
                     </tbody>

@@ -1,5 +1,6 @@
 ﻿using LafDeposu.Helper.Data;
 using LafDeposu.Helper.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -220,24 +221,42 @@ namespace LafDeposu.Helper
         {
             if (!string.IsNullOrEmpty(startsWith))
             {
-                if (!dbWord.StartsWith(startsWith, ignoreCase: true, culture: CultureInfo.GetCultureInfo("tr-TR")))
-                {
+                bool returnValue = false;
+                string[] startsWithList = startsWith.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string word in startsWithList) {
+                    if (dbWord.StartsWith(word, ignoreCase: true, culture: CultureInfo.GetCultureInfo("tr-TR"))) {
+                        returnValue = true;
+                    }
+                }
+                if (!returnValue) {
                     return false;
                 }
             }
 
             if (!string.IsNullOrEmpty(contains))
             {
-                if (!dbWord.Contains(contains))
-                {
+                bool returnValue = false;
+                string[] containsList = contains.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string word in containsList) {
+                    if (dbWord.Contains(word)) {
+                        returnValue = true;
+                    }
+                }
+                if (!returnValue) {
                     return false;
                 }
             }
 
             if (!string.IsNullOrEmpty(endsWith))
             {
-                if (!dbWord.EndsWith(endsWith, ignoreCase: true, culture: CultureInfo.GetCultureInfo("tr-TR")))
-                {
+                bool returnValue = false;
+                string[] endsWithList = endsWith.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string word in endsWithList) {
+                    if (dbWord.EndsWith(word, ignoreCase: true, culture: CultureInfo.GetCultureInfo("tr-TR"))) {
+                        returnValue = true;
+                    }
+                }
+                if (!returnValue) {
                     return false;
                 }
             }

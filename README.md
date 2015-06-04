@@ -1,7 +1,7 @@
 # Laf Deposu
 Laf Deposu sizin girmiş olduğunuz harflerden oluşabilecek Türkçe kelimeleri bulmaya yarayan bir programdır.
 
-Alfabede yer alan 29 harf dışında, özel bir harf olarak * karakterini kullanabilirsiniz. Yıldız karakteri (*) joker harf yerine geçip, alfabedeki tüm harfleri sizin için arayacaktır. Örneğin arama alanına ke* yazdığınızda karşınıza "kel, kek, kep, bek" sonuçları gelecektir.
+Alfabede yer alan 29 harf dışında, özel bir harf olarak \* karakterini kullanabilirsiniz. Yıldız karakteri (\*) joker harf yerine geçip, alfabedeki tüm harfleri sizin için arayacaktır. Örneğin arama alanına ke* yazdığınızda karşınıza "kel, kek, kep, bek" sonuçları gelecektir.
 
 Girdiğiniz harflerin sıralaması önemli değildir. kemal, ekmal, lemak ya da lamek arasınada program açısından bir fark yoktur. Yıldız karakterini de istediğiniz sırada yazabilirsiniz.
 
@@ -13,7 +13,7 @@ Filtre bölümü arama sonuçlarında karşınıza gelen listeyi kısıtlamanız
 
 #### Başlayan
 
-Arama sonuçlarınız bu bölümde yazan harflerle başlayan kelimelerden oluşur. Örneğin **Arama** bölümüne kemal yazıp, **Başlayan** bölümüne k yazarsanız arama sonuçlarından sadece k ile başlayanlar size görünür ve sonuçlar **k**alem, **k**elam, **k**emal ve **k**ale olur. **Arama** bölümüne kemal ve **Başlayan** bölümüne kal yazarsanız bulacağınız sonuçlar **kal**em, **kal**e ve **kal** olur. Bu filtre alanında diğer alanlarda olduğu gibi virgül (, ) kullanarak birden çok başlangıç filtresi oluşturabilirsiniz. Örneğin **Arama** bölümüne kemal yazıp, **Başlayan** bölümüne k,e yazarsanız arama sonuçlarından k ve e ile başlayanlar size görünür ve sonuçlar **e**mlak, **k**alem, **k**elam, **k**emal, **e**lma ve **k**ale olur.
+Arama sonuçlarınız bu bölümde yazan harflerle başlayan kelimelerden oluşur. Örneğin **Arama** bölümüne kemal yazıp, **Başlayan** bölümüne k yazarsanız arama sonuçlarından sadece k ile başlayanlar size görünür ve sonuçlar **k**alem, **k**elam, **k**emal ve **k**ale olur. **Arama** bölümüne kemal ve **Başlayan** bölümüne kal yazarsanız bulacağınız sonuçlar **kal**em, **kal**e ve **kal** olur. Bu filtre alanında diğer alanlarda olduğu gibi virgül (,) kullanarak birden çok başlangıç filtresi oluşturabilirsiniz. Örneğin **Arama** bölümüne kemal yazıp, **Başlayan** bölümüne k,e yazarsanız arama sonuçlarından k ve e ile başlayanlar size görünür ve sonuçlar **e**mlak, **k**alem, **k**elam, **k**emal, **e**lma ve **k**ale olur.
 
 #### İçeren
 

@@ -29,6 +29,10 @@ namespace LafDeposu.UI.Controllers
             string keyword = Request.QueryString["keyword"];
             if (string.IsNullOrWhiteSpace(keyword))
             {
+                if (word != null) {
+                    word = word.Replace('-', ' ');
+                }
+                
                 keyword = word;
 
                 if (!string.IsNullOrWhiteSpace(word))
@@ -39,6 +43,9 @@ namespace LafDeposu.UI.Controllers
                 }
             }
 
+            if (keyword != null) {
+                keyword = keyword.Replace('-', ' ');
+            }
             if (!string.IsNullOrEmpty(keyword))
             {
                 ss.Keyword = keyword;

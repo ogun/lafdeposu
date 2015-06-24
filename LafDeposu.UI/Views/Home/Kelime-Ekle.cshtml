@@ -6,10 +6,11 @@
 @section styles
 {
     @Styles.Render("~/sbundles/kelimeEkle")
+    <style type="text/css">.freeSpace {margin-bottom: 30px;}</style>
 }
 
 <div class="row" ng-controller="wordAddCtrl">
-    <div class="col-md-12">
+    <div class="col-md-12 freeSpace">
         <h2>Kelime Ekle</h2>
         <p>Bu bölümü kullanarak veritabanına kelime ekleyebilirsiniz. Eklediğiniz kelimeler sisteme hemen dahil olurlar ve daha sonra kontrolden geçerler. Kontrol sonucunda uygun bulunmayan kelimeler sistemden çıkarılır.</p>
         <form role="form">

@@ -1,8 +1,12 @@
-﻿using LafDeposu.Helper.Logging;
+﻿using LafDeposu.Helper;
+using LafDeposu.Helper.Data;
+using LafDeposu.Helper.Logging;
 using LafDeposu.Helper.Models;
 using LafDeposu.UI.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,37 +23,31 @@ namespace LafDeposu.UI.Controllers
         }
 
         // GET: /Home/
+        [OutputCache(Duration = 300, VaryByParam = "startsWith;contains;endsWith;resultCharCount")]
         public ActionResult Index(string word)
         {
             SearchShare ss = new SearchShare();
+            ss.Data = "[]";
 
             ViewBag.Title = "Laf Deposu";
             ViewBag.Description = "Girdiğiniz harflerle oluşabilecek Türkçe kelimeleri üreten bir internet sitesi.";
             ViewBag.Keywords = "laf deposu, türkçe kelimeler, kelimelik oyunu hile, scrabble hile";
 
-            string keyword = Request.QueryString["keyword"];
-            if (string.IsNullOrWhiteSpace(keyword))
-            {
-                if (word != null) {
-                    word = word.Replace('-', ' ');
-                }
-                
-                keyword = word;
-
-                if (!string.IsNullOrWhiteSpace(word))
-                {
-                    ViewBag.Title = string.Format("{0} | Laf Deposu", word);
-                    ViewBag.Description = string.Format("{0} kelimesinin anlamı ve {0} kelimesinin harfleriyle oluşturulabilecek Türkçe kelimeler.", word);
-                    ViewBag.Keywords = string.Format("{0} anlamı, {0} ne demek, {0} nedir, {0} hakkında bilgi, {0} kelimesinin harfleriyle oluşturulabilecek kelimeler", word);
-                }
+            if (string.IsNullOrWhiteSpace(word)) {
+                string keyword = Request.QueryString["keyword"];
+                word = keyword;
             }
+            
 
-            if (keyword != null) {
-                keyword = keyword.Replace('-', ' ');
-            }
-            if (!string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrWhiteSpace(word))
             {
-                ss.Keyword = keyword;
+                word = word.Replace('-', ' ');
+
+                ViewBag.Title = string.Format("{0} | Laf Deposu", word);
+                ViewBag.Description = string.Format("{0} kelimesinin anlamı ve {0} kelimesinin harfleriyle oluşturulabilecek Türkçe kelimeler.", word);
+                ViewBag.Keywords = string.Format("{0} anlamı, {0} ne demek, {0} nedir, {0} hakkında bilgi, {0} kelimesinin harfleriyle oluşturulabilecek kelimeler", word);
+
+                ss.Keyword = word;
                 ss.StartsWith = Request.QueryString["startsWith"];
                 ss.Contains = Request.QueryString["contains"];
                 ss.EndsWith = Request.QueryString["endsWith"];
@@ -63,6 +61,10 @@ namespace LafDeposu.UI.Controllers
                         ss.ResultCharCount = tmpResultCharCount;
                     }
                 }
+
+                FindWordHelper help = new FindWordHelper(ConfigurationManager.ConnectionStrings["MySql"].ConnectionString, DataAccessType.MySql);
+                WordList wl = help.CreateResult(ss.Keyword, ss.StartsWith, ss.Contains, ss.EndsWith, ss.ResultCharCount);
+                ss.Data = JsonConvert.SerializeObject(wl);
             }
 
             return View(ss);

@@ -9,6 +9,10 @@
     @Styles.Render("~/sbundles/index")
 }
 
+<script>
+    var _wordList = @Html.Raw(Model.Data);
+</script>
+
 <div ng-controller="wordListCtrl">
     <div class="row">
         <div class="col-md-12">
@@ -25,6 +29,7 @@
                 <input type="text" id="srch-term" name="srch-term" class="form-control" placeholder="Harfleri Yazınız" ng-model="chars" />
                 <div class="input-group-btn">
                     <button id="srch-button" class="btn btn-default" type="submit" ng-click="findWordsClick()"><i class="glyphicon glyphicon-search"></i></button>
+                    <div class="hidden"><button id="srch-button-hidden" class="btn btn-default" type="submit" ng-click="wordListRender()"></button></div>
                 </div>
             </div>
         </div>
@@ -71,7 +76,7 @@
             <table style="width: 100%;">
                 <tr>
                     <td>
-                        <a id="shareResult" href="/?{{share.queryString}}" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span> Paylaş</a>
+                        <a id="shareResult" href="/{{share.queryString}}" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span> Paylaş</a>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
@@ -94,7 +99,7 @@
                      data-ad-slot="1775457636"
                      data-ad-format="auto"></ins>
                 <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+                    (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
                 <!-- /Laf Deposu Content Responsive -->
             </div>
@@ -140,27 +145,27 @@
     @if (!string.IsNullOrEmpty(Model.Keyword)) {
         <script type="text/javascript">
             $(function () {
-                $("#srch-term").val("@Model.Keyword");
+                $("#srch-term").val("@Html.Raw(Model.Keyword)");
 
                 @if (!string.IsNullOrEmpty(Model.StartsWith) || !string.IsNullOrEmpty(Model.Contains) || !string.IsNullOrEmpty(Model.EndsWith))
-            {
-                <text>
-                $("#startsWith").val("@Model.StartsWith");
-                $("#contains").val("@Model.Contains");
-                $("#endsWith").val("@Model.EndsWith");
-                $("#filterAnchor").trigger("click");
-                </text>
-            }
+                {
+                    <text>
+                    $("#startsWith").val("@Html.Raw(Model.StartsWith)");
+                    $("#contains").val("@Html.Raw(Model.Contains)");
+                    $("#endsWith").val("@Html.Raw(Model.EndsWith)");
+                    $("#filterAnchor").trigger("click");
+                    </text>
+                }
 
                 @if (Model.ResultCharCount.HasValue && Model.ResultCharCount.Value.Equals(2))
-            {
-                <text>
-                $("#resultCharCount").trigger("click");
-                </text>
-            }
+                {
+                    <text>
+                    $("#resultCharCount").trigger("click");
+                    </text>
+                }
 
                 $("input").trigger("input");
-                $("#srch-button").click();
+                $("#srch-button-hidden").click();
             });
         </script>
     }

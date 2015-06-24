@@ -13,5 +13,6 @@ namespace LafDeposu.Helper.Models
         public string Contains { get; set; }
         public string EndsWith { get; set; }
         public int? ResultCharCount { get; set; }
+        public string Data { get; set; }
     }
 }

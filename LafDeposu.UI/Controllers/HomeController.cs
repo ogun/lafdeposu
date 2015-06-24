@@ -1,5 +1,6 @@
 ﻿using LafDeposu.Helper.Logging;
 using LafDeposu.Helper.Models;
+using LafDeposu.UI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -91,6 +92,21 @@ namespace LafDeposu.UI.Controllers
         public ActionResult KelimeListele()
         {
             return View();
+        }
+
+        // GET: /Rss/
+        [ChildActionOnly]
+        [OutputCache(Duration=60*60*24)]
+        public ActionResult Rss() {
+            RssModel model = new RssModel();
+
+            try {
+                model.Load();
+            } catch (Exception ex) {
+                Logger.ErrorException(ex.Message, ex);
+            }
+
+            return PartialView(model);
         }
     }
 }

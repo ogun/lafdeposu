@@ -44,6 +44,12 @@ namespace LafDeposu.UI
             );
 
             routes.MapRoute(
+                name: "Rss",
+                url: "Rss",
+                defaults: new { controller = "Home", action = "Rss" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{word}",
                 defaults: new { controller = "Home", action = "Index", word = UrlParameter.Optional }

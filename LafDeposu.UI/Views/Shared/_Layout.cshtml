@@ -57,25 +57,8 @@
 
         @RenderBody()
 
-        <div class="row">
-            <div class="col-md-12 ads-link">
-                <a class="btn btn-default" title="Rüzgar Erkoçlar" href="/ruzgar-erkoclar">Rüzgar Erkoçlar</a>
-                <a class="btn btn-default" title="Yağmur Tanrısevsin" href="/yagmur-tanrisevsin">Yağmur Tanrısevsin</a>
-                <a class="btn btn-default" title="Özcan Deniz" href="/ozcan-deniz">Özcan Deniz</a>
-                <a class="btn btn-default" title="Güneşin Kızları" href="/gunesin-kizlari">Güneşin Kızları</a>
-                <a class="btn btn-default" title="Poyraz Karayel" href="/poyraz-karayel">Poyraz Karayel</a>
-                <a class="btn btn-default" title="İftar Menüsü" href="/iftar-menusu">İftar Menüsü</a>
-                <a class="btn btn-default" title="Yemek Tarifleri" href="/yemek-tarifleri">Yemek Tarifleri</a>
-                <a class="btn btn-default" title="İl Dışı Atama" href="/il-disi-atama">İl Dışı Atama</a>
-                <a class="btn btn-default" title="İftara Ne Kadar Kaldı" href="/iftara-ne-kaldi">İftara Ne Kadar Kaldı</a>
-                <a class="btn btn-default" title="Öğle Namazı" href="/ogle-namazi">Öğle Namazı</a>
-                <a class="btn btn-default" title="İmsakiye" href="/imsakiye">İmsakiye</a>
-                <a class="btn btn-default" title="Nihat Hatipoğlu" href="/nihat-hatipoglu">Nihat Hatipoğlu</a>
-                <a class="btn btn-default" title="Ezan Saatleri" href="/ezan-saatleri">Ezan Saatleri</a>
-                <a class="btn btn-default" title="Orucu Bozan Şeyler" href="/orucu-bozan-seyler">Orucu Bozan Şeyler</a>
-            </div>
-        </div>
-
+        @Html.Action("Rss", "Home")
+        
         <div class="gads ads-footer">
             <!-- Laf Deposu Footer Responsive -->
             <ins class="adsbygoogle"

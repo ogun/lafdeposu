@@ -1,0 +1,11 @@
+﻿@model LafDeposu.UI.Model.RssModel
+
+@if (Model != null && Model.RssFeed != null) {
+    <div class="row">
+        <div class="col-md-12 ads-link">
+            @foreach (var feed in Model.RssFeed) {
+                <a class="btn btn-default" title="@feed.Value" href="/@feed.Key">@feed.Value</a>
+            }
+        </div>
+    </div>
+}

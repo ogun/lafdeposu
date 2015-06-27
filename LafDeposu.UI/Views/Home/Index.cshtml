@@ -91,18 +91,20 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="gads ads-content">
-                <!-- Laf Deposu Content Responsive -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-1807059015128635"
-                     data-ad-slot="1775457636"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-                <!-- /Laf Deposu Content Responsive -->
-            </div>
+            @if (Request.Browser.IsMobileDevice) {
+                <div class="gads ads-content">
+                    <!-- Laf Deposu Content Responsive -->
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-1807059015128635"
+                         data-ad-slot="1775457636"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                    <!-- /Laf Deposu Content Responsive -->
+                </div>
+            }
         </div>
     </div>
 

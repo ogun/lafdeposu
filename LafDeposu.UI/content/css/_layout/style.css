@@ -1,3 +1,6 @@
 ﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {display: none !important;}
 .ads-header { margin-bottom: 20px; }
 .ads-link a { margin-bottom: 10px; }
+.ads-header-desktop-container { position: relative; }
+.ads-header-desktop-left { height: 600px; left: -180px; position: absolute; width: 160px; }
+.ads-header-desktop-right { height: 600px; position: absolute; right: -180px; width: 160px; }

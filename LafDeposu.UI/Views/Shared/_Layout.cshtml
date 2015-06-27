@@ -18,6 +18,30 @@
 <body>
 
     <div class="container">
+        @if (!Request.Browser.IsMobileDevice) {
+            <div class="gads ads-header-desktop-container">
+                <div class="gads ads-header-desktop-left">
+                    <!-- Laf Deposu Left -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-1807059015128635"
+                         data-ad-slot="5051178032"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="gads ads-header-desktop-right">
+                    <!-- Laf Deposu Right -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:160px;height:600px"
+                         data-ad-client="ca-pub-1807059015128635"
+                         data-ad-slot="8004644433"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        }
         <nav class="navbar navbar-default" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -59,18 +83,20 @@
 
         @Html.Action("Rss", "Home")
         
-        <div class="gads ads-footer">
-            <!-- Laf Deposu Footer Responsive -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-1807059015128635"
-                 data-ad-slot="6673159233"
-                 data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <!-- /Laf Deposu Footer Responsive -->
-        </div>
+        @if (Request.Browser.IsMobileDevice) {
+            <div class="gads ads-footer">
+                <!-- Laf Deposu Footer Responsive -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1807059015128635"
+                     data-ad-slot="6673159233"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <!-- /Laf Deposu Footer Responsive -->
+            </div>
+        }
     </div>
     <!-- /container -->
     <!-- JavaScript

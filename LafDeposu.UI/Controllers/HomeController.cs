@@ -23,7 +23,6 @@ namespace LafDeposu.UI.Controllers
         }
 
         // GET: /Home/
-        [OutputCache(Duration = 300, VaryByParam = "startsWith;contains;endsWith;resultCharCount")]
         public ActionResult Index(string word)
         {
             SearchShare ss = new SearchShare();

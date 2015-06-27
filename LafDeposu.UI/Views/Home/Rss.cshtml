@@ -6,6 +6,11 @@
             @foreach (var feed in Model.RssFeed) {
                 <a class="btn btn-default" title="@feed.Value" href="/@feed.Key">@feed.Value</a>
             }
+            <a class="btn btn-default" title="Kelime Bul" href="/kelime-bul">Kelime Bul</a>
+            <a class="btn btn-default" title="Kelimelik Hile" href="/kelimelik-hile">Kelimelik Hile</a>
+            <a class="btn btn-default" title="Scrabble" href="/scrabble">Scrabble</a>
+            <a class="btn btn-default" title="TDK" href="/tdk">TDK</a>
+            <a class="btn btn-default" title="Türkçe Sözlük" href="/turkce-sozluk">Türkçe Sözlük</a>
         </div>
     </div>
 }

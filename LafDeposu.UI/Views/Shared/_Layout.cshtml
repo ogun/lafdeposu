@@ -13,6 +13,10 @@
     @RenderSection("styles", required: false)
     @RenderSection("scriptsHead", required: false)
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <style type="text/css">
+        @@media (min-width: 1200px) { .container { max-width: 970px !important; } }
+        @@media (min-width: 1400px) { .container { max-width: 1170px !important; } }
+    </style>
 </head>
 
 <body>
@@ -67,16 +71,28 @@
         </nav>
 
         <div class="gads ads-header">
-            <!-- Laf Deposu Üst Responsive -->
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-1807059015128635"
-                 data-ad-slot="9298724435"
-                 data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <!-- /Laf Deposu Üst Responsive -->
+            @if (Request.Browser.IsMobileDevice) {
+                <!-- Laf Deposu Üst Responsive -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1807059015128635"
+                     data-ad-slot="9298724435"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            } else {
+                <div class="gads ads-header-desktop-top">
+                    <!-- Laf Deposu Top -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:728px;height:90px"
+                         data-ad-client="ca-pub-1807059015128635"
+                         data-ad-slot="2235482435"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            }
         </div>
 
         @RenderBody()

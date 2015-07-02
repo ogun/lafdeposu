@@ -72,20 +72,11 @@
     </div>
 
     <div class="row ng-cloak" ng-show="share">
-        <div class="col-md-12">
-            <table style="width: 100%;">
-                <tr>
-                    <td>
-                        <a id="shareResult" href="/{{share.queryString}}" class="btn btn-default"><span class="glyphicon glyphicon-share-alt"></span> Paylaş</a>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default" ng-click="changeListType(1)" ng-class="{active: listType == 1}"><span class="glyphicon glyphicon-th"></span> Sütun</button>
-                            <button type="button" class="btn btn-default" ng-click="changeListType(0)" ng-class="{active: listType != 1}"><span class="glyphicon glyphicon-th-list"></span> Liste</button>
-                        </div>
-                    </td>
-                </tr>
-            </table>
+        <div class="col-md-12 text-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="changeListType(1)" ng-class="{active: listType == 1}"><span class="glyphicon glyphicon-th"></span> Sütun</button>
+                <button type="button" class="btn btn-default" ng-click="changeListType(0)" ng-class="{active: listType != 1}"><span class="glyphicon glyphicon-th-list"></span> Liste</button>
+            </div>
         </div>
     </div>
 

@@ -32,6 +32,12 @@ namespace LafDeposu.UI
             );
 
             routes.MapRoute(
+                name: "Kelimelik-Hile",
+                url: "Kelimelik-Hile",
+                defaults: new { controller = "Home", action = "Kelimelik-Hile" }
+            );
+
+            routes.MapRoute(
                 name: "Iletisim",
                 url: "Iletisim",
                 defaults: new { controller = "Home", action = "Iletisim" }

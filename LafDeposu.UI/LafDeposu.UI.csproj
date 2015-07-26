@@ -214,6 +214,7 @@
     <Content Include="Views\Home\Kelime-Ekle.cshtml" />
     <Content Include="Views\Home\Kelime-Listele.cshtml" />
     <Content Include="Views\Home\Rss.cshtml" />
+    <Content Include="Views\Home\Kelimelik-Hile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

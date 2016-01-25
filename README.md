@@ -5,7 +5,7 @@ Alfabede yer alan 29 harf dışında, özel bir harf olarak \* karakterini kulla
 
 Girdiğiniz harflerin sıralaması önemli değildir. kemal, ekmal, lemak ya da lamek arasınada program açısından bir fark yoktur. Yıldız karakterini de istediğiniz sırada yazabilirsiniz.
 
-Aramalarınızda birden çok yıldız karakteri kullanabilirsiniz
+Aramalarınızda birden çok yıldız karakteri kullanabilirsiniz.
 
 ### Filtre
 

@@ -1,4 +1,4 @@
-# Laf Deposu
+# Laf Deposu [![Build status][img-master]][travis-url-master]
 Laf Deposu sizin girmiş olduğunuz harflerden oluşabilecek Türkçe kelimeleri bulmaya yarayan bir programdır.
 
 Alfabede yer alan 29 harf dışında, özel bir harf olarak \* karakterini kullanabilirsiniz. Yıldız karakteri (\*) joker harf yerine geçip, alfabedeki tüm harfleri sizin için arayacaktır. Örneğin arama alanına ke* yazdığınızda karşınıza "kel, kek, kep, bek" sonuçları gelecektir.
@@ -26,3 +26,6 @@ Arama sonuçlarınız bu bölümde yazan harflerle biten kelimelerden oluşur. �
 ##### Not
 
 7 harfli kelimelerden osman ile başlayanları bulmak için **Arama** bölümüne *******, **Başlayan** bölümüne ise osman yazmanız yeterlidir. Bulacağınız sonuçlar **osman**lı ve **osman**i olacaktir. Bu şekilde aramalar veritabanının tamamında yapıldığı için daha uzun sürebilir.
+
+[img-master]: https://travis-ci.org/ogun/lafdeposu.svg?branch=master
+[travis-url-master]: https://travis-ci.org/ogun/lafdeposu

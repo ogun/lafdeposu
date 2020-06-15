@@ -1,5 +1,5 @@
 # Laf Deposu [![Build status][img-master]][travis-url-master]
-Laf Deposu sizin girmiş olduğunuz harflerden oluşabilecek Türkçe kelimeleri bulmaya yarayan bir programdır.
+Laf Deposu sizin girmiş olduğunuz harflerden oluşabilecek Türkçe kelimeleri bulmaya yarayan bir .NET programıdır.
 
 Alfabede yer alan 29 harf dışında, özel bir harf olarak \* karakterini kullanabilirsiniz. Yıldız karakteri (\*) joker harf yerine geçip, alfabedeki tüm harfleri sizin için arayacaktır. Örneğin arama alanına ke* yazdığınızda karşınıza "kel, kek, kep, bek" sonuçları gelecektir.
 
